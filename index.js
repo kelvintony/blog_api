@@ -10,6 +10,8 @@ const app = express();
 
 const port = process.env.PORT || 5000;
 
+const MONGODB_URL = `${process.env.MONGODB_URL}`;
+
 dotenv.config();
 
 //middlewares
@@ -19,13 +21,13 @@ app.use(express.urlencoded({ limit: '30mb', extended: 'true' }));
 app.use(cors());
 //
 //
-
+// console.log('mongoose', MONGODB_URL);
 app.get('/', (req, res) => {
   res.send('Welcome to the workspace');
 });
 
 mongoose
-  .connect(process.env.MONGOBD_URL) //mongodb://127.0.0.1:27017/student2023BlogDb
+  .connect(MONGODB_URL) //mongodb://127.0.0.1:27017/student2023BlogDb
   .then(() => {
     app.listen(port, () => {
       console.log('server is running on port ' + port);
