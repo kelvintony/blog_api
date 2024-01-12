@@ -33,5 +33,10 @@ mongoose
   });
 
 // API End points or Routes
+
+app.get('/', (req, res) => {
+  res.send('Welcome to the workspace');
+});
+
 app.use('/posts', postRoute);
 app.use('/users', userRoute);
