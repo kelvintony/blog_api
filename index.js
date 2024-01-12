@@ -20,6 +20,10 @@ app.use(cors());
 //
 //
 
+app.get('/', (req, res) => {
+  res.send('Welcome to the workspace');
+});
+
 mongoose
   .connect(process.env.MONGOBD_URL) //mongodb://127.0.0.1:27017/student2023BlogDb
   .then(() => {
@@ -33,10 +37,6 @@ mongoose
   });
 
 // API End points or Routes
-
-app.get('/', (req, res) => {
-  res.send('Welcome to the workspace');
-});
 
 app.use('/posts', postRoute);
 app.use('/users', userRoute);
